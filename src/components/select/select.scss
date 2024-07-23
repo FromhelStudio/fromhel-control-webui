@@ -1,0 +1,25 @@
+@use '../variables.scss' as *;
+
+.select-component{
+  width: 276px;
+  height: 41px;
+  border-radius: 10px;
+  border: 1px solid $secondary_gray;  
+  outline: none;
+  margin: 5px;
+  padding: 12px;
+  color: $primary_gray;
+
+  &:hover{
+    cursor: pointer;
+  }
+  
+  &:focus{
+    border: 1px solid $primary_blue;
+  }
+
+  .option{
+    padding: 10px;
+    color: $primary_gray;
+  }
+}
