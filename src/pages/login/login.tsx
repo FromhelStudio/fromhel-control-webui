@@ -53,7 +53,7 @@ export default function Login() {
                 Olá, <br />
                 bem-vindo de volta
               </h1>
-              <p>Faça seu cadastro para podermos usar na base de dados</p>
+              <p>Faça seu cadastro para podermos usar no app mobile</p>
             </div>
             <form onSubmit={handleSubmit(createUser as any)}>
               <Input
