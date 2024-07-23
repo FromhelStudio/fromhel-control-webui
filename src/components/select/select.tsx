@@ -1,15 +1,13 @@
-import { MouseEvent } from 'react'
 import './select.scss'
 
 interface ISelectProps {
   options: string[]
   className?: string
-  onClick?: (event: MouseEvent) => any | void
   onChange?: (e: React.FormEvent<HTMLSelectElement>) => void
   value?: string
   validationForms?: any
 }
-export default function Select({options, onClick, value}: ISelectProps){
+export default function Select({options, value}: ISelectProps){
 
   return(
     <>
