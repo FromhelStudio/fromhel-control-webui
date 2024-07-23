@@ -62,6 +62,7 @@ export default function SyncOut(){
                 validationForms={register('password')}
               />
               <Button text={'ENTRAR'} />
+              <a href={navigate('/register')}><p>Novo acesso? Faça o cadastro!</p></a>
             </form>
           </div>
           <div className="login-logo">
