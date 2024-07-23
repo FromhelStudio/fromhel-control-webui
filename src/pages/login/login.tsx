@@ -1,5 +1,5 @@
 import './login.scss'
-import logo from '../../assets/imagem.png'
+import logo from '../../assets/logo.webp'
 import axios from 'axios'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Input from '../../components/input/input'
