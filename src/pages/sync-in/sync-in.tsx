@@ -33,14 +33,17 @@ export default function Login() {
           role: watch('role')
         }
       )
-      await toast.success('Cadastrado com sucesso')
-    
+      console.log(response.data)
+      
       setValue('name', '')
       setValue('email', '')
       setValue('password', '')
       setValue('phone', '')
       setValue('role', '')
-      navigate('/login')
+      toast.success('Cadastrado com sucesso')
+      setTimeout(() => {
+        navigate('/login')
+      }, 2000);
     } catch (error) {
       toast.error('Erro ao cadastrar, verifique seus dados e tente novamente')
       console.log('error', error)
@@ -107,7 +110,7 @@ export default function Login() {
       </div>
       <ToastContainer 
       position="top-right"
-      autoClose={5000}
+      autoClose={2000}
       hideProgressBar={false}
       newestOnTop={false}
       closeOnClick
