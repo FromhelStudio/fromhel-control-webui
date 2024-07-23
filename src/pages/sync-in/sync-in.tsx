@@ -1,16 +1,20 @@
-import './login.scss'
+import './sync-in.scss'
 import logo from '../../assets/logo.webp'
 import axios from 'axios'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Input from '../../components/input/input'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; 
+import { useNavigate } from 'react-router-dom'
 import Button from '../../components/button/button'
 import { useForm } from 'react-hook-form'
 import { loginFormSchema, TLoginSchema } from './loginForm'
 import bcrypt from 'bcryptjs'
 
 export default function Login() {
+
+  const navigate = useNavigate()
+
   const { register, setValue, handleSubmit, watch } = useForm<TLoginSchema>({
     resolver: zodResolver(loginFormSchema)
   })
@@ -29,14 +33,14 @@ export default function Login() {
           role: watch('role')
         }
       )
-      toast.success('Cadastrado com sucesso')
+      await toast.success('Cadastrado com sucesso')
     
       setValue('name', '')
       setValue('email', '')
       setValue('password', '')
       setValue('phone', '')
       setValue('role', '')
-      console.log(response.data)
+      navigate('/login')
     } catch (error) {
       toast.error('Erro ao cadastrar, verifique seus dados e tente novamente')
       console.log('error', error)
@@ -93,7 +97,7 @@ export default function Login() {
                 <option value='Sound Engineer'>Sound Engineer</option>
                 <option value='Media'>Media</option>
               </select>
-              <Button text={'REGISTRAR'} onClick={() => createUser()} />
+              <Button text='REGISTRAR'/>
             </form>
           </div>
           <div className="login-logo">
