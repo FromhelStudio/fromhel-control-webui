@@ -1,0 +1,14 @@
+{
+ 
+  "rewrites": [
+    {
+      "source": "/login",
+      "destination": "src/pages/sync-out/sync-out.tsx"
+    },
+    {
+      "source": "/register",
+      "destination": "src/pages/login/sync-in.tsx"
+    }
+  ]
+}
+  
