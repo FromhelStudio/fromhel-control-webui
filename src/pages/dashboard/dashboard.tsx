@@ -26,7 +26,7 @@ export default function Dashboard() {
     <div className="dashboard-page">
       <div className="dashboard-box">
         <div className="dashboard-header">
-            <h1>Dashboard</h1>
+            <h1>Cadastros: </h1> <p>{clients.length}</p>
         </div>
         <div className="dashboard-table">
           <table>
