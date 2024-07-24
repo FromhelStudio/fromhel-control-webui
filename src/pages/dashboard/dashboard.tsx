@@ -33,8 +33,8 @@ export default function Dashboard() {
             <thead>
               <tr>
                 <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
+                <th>NOME</th>
+                <th>EMAIL</th>
               </tr>
             </thead>
             <tbody>

@@ -22,9 +22,9 @@ h1{
 
 .dashboard-box{
     width: 50vw;
-    height: 70vh;
+    height: 80vh;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
     margin: auto;
@@ -49,7 +49,7 @@ h1{
             font-optical-sizing: auto;
             font-weight: 400;
             font-style: bold;
-            font-size: 30px;
+            font-size: 15px;
             margin:  0 5px;
         }
 
