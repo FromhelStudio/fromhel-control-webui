@@ -23,26 +23,33 @@ export default function Dashboard() {
 
   return (
     <>
-    <div className="dashboard-container">
-      <h1>Dashboard</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>FHS_ID</th>
-            <th>Name</th>
-            <th>Email</th>
-          </tr>
-        </thead>
-        <tbody>
-          {clients.map((client, index) => (
-            <tr key={index}>
-              <td>{client.clientId}</td>
-              <td>{client.clientName}</td>
-              <td>{client.email}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="dashboard-page">
+      <div className="dashboard-box">
+        <div className="dashboard-header">
+            <h1>Dashboard</h1>
+        </div>
+        <div className="dashboard-table">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+              </tr>
+            </thead>
+            <tbody>
+              {clients.map((client, index) => (
+                <tr key={index}>
+                  <td>{client.clientId}</td>
+                  <td>{client.clientName}</td>
+                  <td>{client.email}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+        </div>
+      </div>
     </div>
      <ToastContainer 
      position="top-right"
