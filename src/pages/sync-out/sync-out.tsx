@@ -4,6 +4,7 @@ import axios from 'axios'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Input from '../../components/input/input'
 import { ToastContainer, toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css'; 
 import Button from '../../components/button/button'
 import { useForm } from 'react-hook-form'
@@ -15,6 +16,7 @@ export default function SyncOut(){
   const { register, setValue, handleSubmit, watch } = useForm<TSyncOutSchema>({
     resolver: zodResolver(syncOutSchema)
   })
+  const navigate = useNavigate()
 
   const createUser = async () => {
     const salt =  bcrypt.genSaltSync(10)
@@ -36,6 +38,11 @@ export default function SyncOut(){
       toast.error('Erro ao entrar, verifique seus dados e tente novamente')
     }
   }
+
+  const handleNavigate = () => {
+    navigate('/register')
+  }
+
   return(
     <>
       <div className="login-page">
@@ -62,7 +69,7 @@ export default function SyncOut(){
                 validationForms={register('password')}
               />
               <Button text={'ENTRAR'} />
-              <a><p>Novo acesso? Faça o cadastro!</p></a>
+              <a href='#' style={{whiteSpace: nowrap}} onClick={handleNavigate}><p>Novo acesso? Faça o cadastro!</p></a>
             </form>
           </div>
           <div className="login-logo">
