@@ -24,9 +24,14 @@ export default function Dashboard() {
   return (
     <>
     <div className="dashboard-page">
-      <div className="dashboard-box">
         <div className="dashboard-header">
-            <h1>Cadastros: </h1> <p>{clients.length}</p>
+            <h1>Bem-Vindo ao Dashboard!</h1>
+        </div>
+        <div className="clients">
+          <h1>Clientes Cadastrados:</h1>
+          <div className="c-box">
+          <p>{clients.length}</p> 
+          </div>
         </div>
         <div className="dashboard-table">
           <table>
@@ -50,7 +55,6 @@ export default function Dashboard() {
 
         </div>
       </div>
-    </div>
      <ToastContainer 
      position="top-right"
      autoClose={5000}

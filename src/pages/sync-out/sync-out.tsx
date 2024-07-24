@@ -19,8 +19,7 @@ export default function SyncOut(){
   const navigate = useNavigate()
 
   const createUser = async () => {
-    const salt =  bcrypt.genSaltSync(10)
-    const hashedPassword = bcrypt.hashSync(watch('password'), salt)
+    const hashedPassword = bcrypt.hashSync(watch('password'), '$2a$10$CwTycUXWue0Thq9StjUM0u')
     try {
       const response = await axios.post(
         'https://fromhel-control.vercel.app/v1/user/sync-out',
@@ -30,7 +29,9 @@ export default function SyncOut(){
         }
       )
       toast.success('Logado com sucesso')
-    
+      setTimeout(() => {
+        navigate('/dashboard')
+      }, 1000);
       setValue('email', '')
       setValue('password', '')
       console.log(response.data)
@@ -53,9 +54,9 @@ export default function SyncOut(){
                 Olá, <br />
                 bem-vindo de volta
               </h1>
-              <p>Faça seu cadastro para podermos usar no app mobile</p>
+              <p>Faça login com seu Email e Senha registrados.</p>
             </div>
-            <form onSubmit={handleSubmit(createUser as any)}>
+            <form onSubmit={handleSubmit(createUser)}>
               <Input
                 className={'form-input'}
                 type="email"
