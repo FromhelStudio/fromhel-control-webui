@@ -22,6 +22,7 @@ export default function Dashboard() {
   }, []); 
 
   return (
+    <>
     <div className="dashboard-container">
       <h1>Dashboard</h1>
       <table>
@@ -55,5 +56,6 @@ export default function Dashboard() {
      pauseOnHover
      theme="colored"
      />
+     </>
   );
 }
