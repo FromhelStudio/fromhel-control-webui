@@ -1,24 +1,29 @@
 import { useState, useEffect } from 'react';
+import useCookies from '../../hooks/useCookies';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import './dashboard.scss';
 
 export default function Dashboard() {
+  const authTokenName = 'fhs-auth-token'
   const [clients, setClients] = useState([]);
+  const { getCookie } = useCookies();
 
   useEffect(() => {
-    async function fetchClients() {
-      try {
-        const response = await axios.get('https://fromhel-backend.vercel.app/list');
-        setClients(response.data); 
-        toast.success('Clientes encontrados!')
-      } catch (error) {
-        toast.error('Erro ao achar clientes!')
-        console.error('Error fetching clients:', error);
+    if(getCookie(authTokenName)){
+      async function fetchClients() {
+        try {
+          const response = await axios.get('https://fromhel-backend.vercel.app/list');
+          setClients(response.data); 
+          toast.success('Clientes encontrados!')
+        } catch (error) {
+          toast.error('Erro ao achar clientes!')
+          console.error('Error fetching clients:', error);
+        }
       }
+  
+      fetchClients();
     }
-
-    fetchClients();
   }, []); 
 
   return (

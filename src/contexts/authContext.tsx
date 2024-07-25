@@ -34,7 +34,7 @@ export default function AuthProvider({children}){
         void localStorage.setItem('useName', response.data.name)
         void setUser({Login: response.data.name})
         void setCookie(authTokenName, response.data.token, {
-          expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7),
+          expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 1),
         })
         void navigate('/dashboard')
  }catch(e){
