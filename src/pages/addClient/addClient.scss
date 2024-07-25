@@ -75,7 +75,9 @@
 @media screen and (max-width: 440px){
   .add-client-box{
     width: 100%;
+    height: 70%;
     .add-client-form{
+      padding: 10px;
       display: flex;
       flex-direction: column;
       justify-content: center;
