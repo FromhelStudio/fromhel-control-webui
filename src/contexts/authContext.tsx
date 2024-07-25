@@ -36,7 +36,6 @@ export default function AuthProvider({children}){
         void setCookie(authTokenName, response.data.token, {
           expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 1),
         })
-        void navigate('/dashboard')
  }catch(e){
     throw new Error('Erro ao entrar, verifique seus dados e tente novamente')
   }
