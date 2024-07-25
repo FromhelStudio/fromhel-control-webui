@@ -26,9 +26,10 @@ export default function AddClient() {
   }, []); 
 
   const handleAdd = async () => {
+    const name = watch('name').toString().toUpperCase()
       try {
         const response = await axios.post('https://fromhel-backend.vercel.app/register', {
-          clientName: watch('name'),
+          clientName: name,
           email: watch('email')
         });
         toast.success('Cliente adicionado!')
