@@ -3,6 +3,7 @@ import useCookies from '../../hooks/useCookies';
 import axios from 'axios';
 import Header from '../../components/header/header';
 import Button from '../../components/button/button';
+import {useNavigate} from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import './dashboard.scss';
 
@@ -16,6 +17,7 @@ export default function Dashboard() {
   const authTokenName = 'fhs-auth-token'
   const [clients, setClients] = useState<IClient[]>([]);
   const { getCookie } = useCookies();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if(getCookie(authTokenName)){
@@ -64,8 +66,8 @@ export default function Dashboard() {
             </tbody>
           </table>
           <div className="table-footer">
-            <Button action={'add'} text={'ADICIONAR CLIENTE'} />
-            <Button action={'remove'} text={'REMOVER CLIENTE'} />
+            <Button action={'add'} onClick={() => navigate('/add')} text={'ADICIONAR CLIENTE'} />
+            <Button action={'remove'} onClick={() => navigate('/remove')} text={'REMOVER CLIENTE'} />
           </div>
         </div>
       </div>

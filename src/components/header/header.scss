@@ -20,8 +20,20 @@
       }
     }
 
-    .header-out{
+
+    .header-options{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
       margin: 20px;
+    }
+
+    .header-back{
+      margin: 0px 5px;
+      cursor: pointer;
+    }
+
+    .header-out{
       cursor: pointer;
     }
 }
