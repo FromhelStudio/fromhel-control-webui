@@ -40,9 +40,10 @@ export default function SyncIn() {
       setValue('phone', '')
       setValue('role', '')
       toast.success('Cadastrado com sucesso')
+      toast.info('Atenção! Seu cadastro deve ser aprovado por um admin. Aguarde para logar no sistema')
       setTimeout(() => {
         navigate('/login')
-      }, 2000);
+      }, 4000);
     } catch (error) {
       toast.error('Erro ao cadastrar, verifique seus dados e tente novamente')
       console.log('error', error)
@@ -109,7 +110,7 @@ export default function SyncIn() {
       </div>
       <ToastContainer 
       position="top-right"
-      autoClose={2000}
+      autoClose={3000}
       hideProgressBar={false}
       newestOnTop={false}
       closeOnClick
