@@ -3,6 +3,7 @@ import './button.scss'
 interface IButtonProps {
   text?: string | null;
   type?: 'button' | 'submit' | 'reset';
+  action?: 'submit' | 'add' | 'remove'
   onClick?: (event: MouseEvent) => any | void
   isDisabled?: boolean
 }
@@ -15,10 +16,10 @@ interface IButtonProps {
  * @returns
 */
 
-export default function Button({text, isDisabled = undefined, onClick, type}: IButtonProps){
+export default function Button({text, action = 'submit', isDisabled = undefined, onClick, type}: IButtonProps){
   return(
     <button 
-    className={`button-component`} 
+    className={`button-component-${action}`} 
     type={type}
     onClick={onClick}   
     disabled={isDisabled}>

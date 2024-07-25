@@ -99,7 +99,7 @@ export default function SyncIn() {
                 <option value='Sound Engineer'>Sound Engineer</option>
                 <option value='Media'>Media</option>
               </select>
-              <Button text='REGISTRAR'/>
+              <Button action={'submit'} text='REGISTRAR'/>
             </form>
           </div>
           <div className="login-logo">

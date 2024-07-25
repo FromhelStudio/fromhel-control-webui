@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import useCookies from '../../hooks/useCookies';
 import axios from 'axios';
 import Header from '../../components/header/header';
+import Button from '../../components/button/button';
 import { ToastContainer, toast } from 'react-toastify';
 import './dashboard.scss';
 
@@ -62,7 +63,10 @@ export default function Dashboard() {
               ))}
             </tbody>
           </table>
-
+          <div className="table-footer">
+            <Button action={'add'} text={'ADICIONAR CLIENTE'} />
+            <Button action={'remove'} text={'REMOVER CLIENTE'} />
+          </div>
         </div>
       </div>
      <ToastContainer 

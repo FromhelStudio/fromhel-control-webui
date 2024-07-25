@@ -90,9 +90,27 @@
         }
 }
 
+.table-footer{
+    padding-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 @media screen and (max-width: 440px){
     .dashboard-table{
         width: 80vw;
         height: fit-content;
+    }
+
+    .table-footer{
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        Button{
+            font-size: 9px;
+            width: 120px;
+        }
     }
   }
