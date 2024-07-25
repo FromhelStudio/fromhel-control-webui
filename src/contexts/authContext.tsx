@@ -46,6 +46,7 @@ useEffect(() => {
   async function redirect(){
     const currentToken = getCookie(authTokenName)
     const routes = ['/login', '/register', '/dashboard']
+    if(location.pathname === '/register') return;
     if(user && currentToken) void navigate('/dashboard')
     if(!routes.includes(location.pathname) && !user && !currentToken) void navigate('/login')
     if(!user && currentToken || user && !currentToken) void navigate('/login')

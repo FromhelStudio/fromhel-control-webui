@@ -11,7 +11,7 @@ import { useForm } from 'react-hook-form'
 import { loginFormSchema, TLoginSchema } from './loginForm'
 import bcrypt from 'bcryptjs'
 
-export default function Login() {
+export default function SyncIn() {
 
   const navigate = useNavigate()
 
