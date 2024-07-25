@@ -1,6 +1,5 @@
 import './sync-out.scss'
 import logo from '../../assets/logo.webp'
-import axios from 'axios'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Input from '../../components/input/input'
 import { ToastContainer, toast } from 'react-toastify';
@@ -8,8 +7,10 @@ import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css'; 
 import Button from '../../components/button/button'
 import { useForm } from 'react-hook-form'
+import {useContext, useCallback} from 'react'
 import { syncOutSchema, TSyncOutSchema } from './syncOutForm'
 import bcrypt from 'bcryptjs'
+import { AuthContext } from '../../contexts/authContext'
 
 export default function SyncOut(){
 
@@ -17,28 +18,22 @@ export default function SyncOut(){
     resolver: zodResolver(syncOutSchema)
   })
   const navigate = useNavigate()
+  const { login } = useContext(AuthContext)
 
-  const createUser = async () => {
+  const syncOut = useCallback(async () => {
     const hashedPassword = bcrypt.hashSync(watch('password'), '$2a$10$CwTycUXWue0Thq9StjUM0u')
     try {
-      const response = await axios.post(
-        'https://fromhel-control.vercel.app/v1/user/sync-out',
-        {
-          email: watch('email'),
-          password: hashedPassword,
-        }
-      )
+      await login(watch('email'), hashedPassword)
       toast.success('Logado com sucesso')
       setTimeout(() => {
         navigate('/dashboard')
       }, 1000);
       setValue('email', '')
       setValue('password', '')
-      console.log(response.data)
     } catch (error) {
       toast.error('Erro ao entrar, verifique seus dados e tente novamente')
     }
-  }
+  }, [login, navigate, setValue, watch])
 
   const handleNavigate = () => {
     navigate('/register')
@@ -56,7 +51,7 @@ export default function SyncOut(){
               </h1>
               <p>Faça login com seu Email e Senha registrados.</p>
             </div>
-            <form onSubmit={handleSubmit(createUser)}>
+            <form onSubmit={handleSubmit(syncOut)}>
               <Input
                 className={'form-input'}
                 type="email"
