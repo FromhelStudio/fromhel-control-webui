@@ -1,12 +1,19 @@
 import { useState, useEffect } from 'react';
 import useCookies from '../../hooks/useCookies';
 import axios from 'axios';
+import Header from '../../components/header/header';
 import { ToastContainer, toast } from 'react-toastify';
 import './dashboard.scss';
 
+interface IClient {
+  clientId: string;
+  clientName: string;
+  email: string;
+}
+
 export default function Dashboard() {
   const authTokenName = 'fhs-auth-token'
-  const [clients, setClients] = useState([]);
+  const [clients, setClients] = useState<IClient[]>([]);
   const { getCookie } = useCookies();
 
   useEffect(() => {
@@ -29,11 +36,9 @@ export default function Dashboard() {
   return (
     <>
     <div className="dashboard-page">
-        <div className="dashboard-header">
-            <h1>Bem-Vindo ao Dashboard!</h1>
-        </div>
+      <Header />
         <div className="clients">
-          <h1>Clientes Cadastrados:</h1>
+          <h1>CLIENTES CADASTRADOS:</h1>
           <div className="c-box">
           <p>{clients.length}</p> 
           </div>
