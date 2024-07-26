@@ -9,14 +9,14 @@ import Dashboard from './pages/dashboard/dashboard';
 export default function Router() {
   return (
     <AuthProvider>
-    <Routes>
-        <Route path='/login' element={<SyncOut />}/>
-        <Route path="/register" element={<SyncIn />}/>
-        <Route path='/remove' element={<Remove />}/>
-        <Route path='/add' element={<AddClient />}/>
-        <Route path='/dashboard' element={<Dashboard />}/>
-        <Route path='*' element={<SyncOut />} />
-    </Routes>
+      <Routes>
+          <Route path='/login' element={<SyncOut />}/>
+          <Route path="/register" element={<SyncIn />}/>
+          <Route path='/remove' element={<Remove />}/>
+          <Route path='/add' element={<AddClient />}/>
+          <Route path='/dashboard' element={<Dashboard />}/>
+          <Route path='*' element={<SyncOut />} />
+      </Routes>
     </AuthProvider>
   );
 }

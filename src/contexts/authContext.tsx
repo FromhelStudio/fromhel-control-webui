@@ -7,6 +7,12 @@ type TUserDetail = {
   Login: string
 }
 
+type TChildren = React.ReactNode
+
+interface IAuthProviderProps{
+  children: TChildren
+}
+
 type TAuthContextProps = {
  user: TUserDetail
  login: (user: string, password: string) => void 
@@ -14,7 +20,7 @@ type TAuthContextProps = {
 
 export const AuthContext = createContext({} as TAuthContextProps)
 
-export default function AuthProvider({children}){
+export default function AuthProvider({children}: IAuthProviderProps): JSX.Element {
   const [user, setUser] = useState<TUserDetail>({Login: ''})
   const {getCookie, setCookie} = useCookies()
   
