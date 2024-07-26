@@ -33,6 +33,9 @@ export default function AddClient() {
           email: watch('email')
         });
         toast.success('Cliente adicionado!')
+        setTimeout(() => {
+          navigate('/dashboard')
+        }, 2000);
         console.log('response', response.data)
         setValue('name', '')
         setValue('email', '')

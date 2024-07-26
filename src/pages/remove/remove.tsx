@@ -32,6 +32,9 @@ export default function AddClient() {
           clientId: fhsid
         });
         toast.success('Cliente removido!')
+        setTimeout(() => {
+          navigate('/dashboard')
+        }, 2000);
         console.log('response', response.data)
         setValue('fhsId', '')
       } catch (error) {
