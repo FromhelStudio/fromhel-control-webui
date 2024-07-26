@@ -28,8 +28,10 @@ export default function AddClient() {
   const handleAdd = async () => {
     const fhsid = watch('fhsId').toString().toUpperCase()
       try {
-        const response = await axios.post(`https://fromhel-backend.vercel.app/delete`, {
-          clientId: fhsid
+        const response = await axios.delete(`https://fromhel-backend.vercel.app/delete`, {
+          data: {
+            clientId: fhsid
+          }
         });
         toast.success('Cliente removido!')
         setTimeout(() => {
