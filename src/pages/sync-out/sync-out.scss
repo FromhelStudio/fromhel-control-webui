@@ -80,6 +80,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: flex-start;
       .login-info{
         display: flex;  
         flex-direction: column;
@@ -88,28 +89,28 @@
       }
       h1{
         align-self: flex-start;
-        font-size: 22px;
+        font-size: 24px;
       }
       p{
         align-self: flex-start;
         width: 100%;
         text-wrap: wrap;
-        font-size: 12px;
+        font-size: 14px;
       }
       form{
+        width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: center;
+        align-items: flex-start;
         input{
+
           height: 25%;
-          width: 80%
-        }
-        select{
           width: 90%
         }
         button{
-          width: 100%
+          margin: 5px 5px 5px 25px;
+          width: 80%
         } 
   
       }
@@ -129,26 +130,28 @@
     .login-form{
      
       h1{
-        font-size: 16px;
+        font-size: 18px;
       }
-      p{
-        
+      p{  
         text-wrap: nowrap;
-        font-size: 10px;
+        font-size: 12px;
       }
       form{
+        width: 100%;
         padding: 10px;
         input{
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start;
           height: 5%;
           margin: 5px;
-          width: 80%
-        }
-        select{
           width: 90%
         }
+
         button{
           width: 50%;
-          margin: 5px;
+          margin: 5px 5px 5px 55px;
         } 
       }
     }
@@ -159,13 +162,6 @@
       height: 40px ;
     }
     
-    .select-component{
-      height: 34px;
-      max-width: 200px;
-      padding: 5px;
-      font-size: 9px;
-      margin: 5px;
-    }
     .login-logo{
       display: flex;
       flex-direction: row;

@@ -110,12 +110,12 @@
         align-items: center;
       }
       h1{
-        font-size: 22px;
+        font-size: 24px;
       }
       p{
         width: 70%;
         text-wrap: balance;
-        font-size: 12px;
+        font-size: 14px;
       }
       form{
         input{
@@ -126,6 +126,7 @@
           width: 90%
         }
         button{
+          margin: 4px;
           width: 100%
         } 
   
@@ -146,12 +147,12 @@
     .login-form{
      
       h1{
-        font-size: 16px;
+        font-size: 18px;
       }
       p{
         
         text-wrap: nowrap;
-        font-size: 10px;
+        font-size: 12px;
       }
       form{
         display: flex;
@@ -168,7 +169,7 @@
         }
         button{
           width: 50%;
-          margin: 2px;
+          margin: 4px;
         } 
       }
     }
@@ -183,7 +184,7 @@
       height: 34px;
       max-width: 200px;
       padding: 5px;
-      font-size: 9px;
+      font-size: 11px;
       margin: 5px;
     }
     .login-logo{
