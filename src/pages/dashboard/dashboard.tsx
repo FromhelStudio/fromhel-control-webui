@@ -69,7 +69,6 @@ export default function Dashboard() {
               {clients.map((client, index) => (
                 <tr 
                 className='client-table-row' 
-                onClick={() => console.log('client', client)} 
                 key={index}>
                   <td>{client.clientId}</td>
                   <td>{client.clientName}</td>
