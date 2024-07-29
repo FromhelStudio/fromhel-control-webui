@@ -5,6 +5,7 @@ import Header from '../../components/header/header';
 import Button from '../../components/button/button';
 import {useNavigate} from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
+import Loader from '../../components/loader/loader';
 import './dashboard.scss';
 
 interface IClient {
@@ -14,18 +15,23 @@ interface IClient {
 }
 
 export default function Dashboard() {
+  const [loader, setLoader] = useState<boolean>(false);
   const authTokenName = 'fhs-auth-token'
   const [clients, setClients] = useState<IClient[]>([]);
   const { getCookie } = useCookies();
   const navigate = useNavigate();
 
+  console.log(loader)
+
   useEffect(() => {
     if(getCookie(authTokenName)){
+      setLoader(true);
       async function fetchClients() {
         try {
           const response = await axios.get('https://fromhel-backend.vercel.app/list');
           setClients(response.data); 
           toast.success('Clientes encontrados!')
+          setLoader(false);
         } catch (error) {
           toast.error('Erro ao achar clientes!')
           console.error('Error fetching clients:', error);
@@ -39,6 +45,10 @@ export default function Dashboard() {
   return (
     <>
     <div className="dashboard-page">
+    {
+      loader &&
+        <Loader loading={loader} />
+    }
       <Header />
         <div className="clients">
           <h1>CLIENTES CADASTRADOS:</h1>

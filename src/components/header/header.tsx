@@ -26,10 +26,10 @@ export default function Header(){
         </div>
         <div className={'header-options'}> 
           <div className={'header-back'}>
-           <a onClick={handleBack}><ArrowLeft /></a>
+           <a onClick={handleBack}><ArrowLeft className="arrow"/></a>
           </div>
           <div className={'header-out'}>
-           <a onClick={handleLogOut}><LogOut /></a>
+           <a onClick={handleLogOut}><LogOut className="door-back"/></a>
         </div>
         </div>
       </div>
