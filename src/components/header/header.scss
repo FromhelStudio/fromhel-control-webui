@@ -30,6 +30,17 @@
       margin: 20px;
     }
 
+    .header-check{
+      margin: 0px 5px;
+      cursor: pointer;
+
+      &:hover{
+        .check{
+          color: $quartenary_yellow;
+        }
+      }
+    }
+
     .header-back{
       margin: 0px 5px;
       cursor: pointer;

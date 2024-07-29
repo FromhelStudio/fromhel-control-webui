@@ -3,11 +3,16 @@ import logo from '../../assets/logo.webp'
 import { LogOut } from 'lucide-react';
 import { ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { Check } from 'lucide-react';
 import useCookies from '../../hooks/useCookies';
 
 export default function Header(){
   const {destroy} = useCookies()
   const navigate = useNavigate()
+
+  const handleApprove = () => {
+    navigate('/approve')
+  }
 
   const handleBack = () => {
     navigate(-1)
@@ -25,6 +30,9 @@ export default function Header(){
           <img src={logo} alt="logo" />
         </div>
         <div className={'header-options'}> 
+          <div className={'header-check'}>
+            <a onClick={handleApprove}><Check className="check"/></a>
+          </div>
           <div className={'header-back'}>
            <a onClick={handleBack}><ArrowLeft className="arrow"/></a>
           </div>

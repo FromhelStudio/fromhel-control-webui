@@ -5,6 +5,8 @@ import SyncOut from './pages/sync-out/sync-out';
 import Remove from './pages/remove/remove';
 import AddClient from './pages/addClient/addClient';
 import Dashboard from './pages/dashboard/dashboard';
+import Approve from './pages/approve/approve';
+
 
 export default function Router() {
   return (
@@ -15,6 +17,7 @@ export default function Router() {
           <Route path='/remove' element={<Remove />}/>
           <Route path='/add' element={<AddClient />}/>
           <Route path='/dashboard' element={<Dashboard />}/>
+          <Route path='/approve' element={<Approve />}/>
           <Route path='*' element={<SyncOut />} />
       </Routes>
     </AuthProvider>
