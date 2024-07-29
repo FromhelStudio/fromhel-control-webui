@@ -35,8 +35,8 @@
     } 
     .c-box{
         border-radius: 15px;
-        height: 30px;
-        padding: 10px;
+        height: fit-content;
+        padding: 7px;
         width: fit-content;
         background-color: $primary_black;
         display: flex;
@@ -45,8 +45,17 @@
         align-items: center;
 
         p{
+            font-size: 14px;
             color: $primary_yellow;
         }
+    }
+}
+
+.client-table-row{
+    &:hover{
+        outline: none;
+        text-decoration: underline solid $primary_yellow;
+        border: none;
     }
 }
 
