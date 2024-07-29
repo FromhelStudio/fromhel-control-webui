@@ -138,6 +138,11 @@
       form{
         width: 100%;
         padding: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
         input{
           display: flex;
           flex-direction: column;
@@ -149,8 +154,8 @@
         }
 
         button{
-          width: 50%;
-          margin: 5px 5px 5px 55px;
+          width: 50%; 
+          margin: 5%;
         } 
       }
     }

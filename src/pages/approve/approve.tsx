@@ -24,6 +24,21 @@ export default function Approve(){
   const [user, setUser] = useState<IUserProps[]>([]);
   const { getCookie } = useCookies();
 
+  async function allowUser(email: string){
+    try{
+      const response = await axios.put('https://fromhel-control.vercel.app/v1/user/update-user', {
+        email: email,
+        isEmployee: true
+      })
+      if(response){
+        toast.success('Usuário autorizado!')
+      }
+    }catch(error){
+      toast.error('Erro ao achar usuários!')
+      console.error('Error fetching clients:', error);
+    }
+  }
+
 
   useEffect(() => {
     if(getCookie(authTokenName)){
@@ -74,8 +89,8 @@ export default function Approve(){
                     <td>{user.email}</td>
                     <td>{user.phone}</td>
                     <td>{user.role}</td>
-                    <td><button><CircleCheck className='check-button'/></button></td>
-                    <td><button><Ban className='refuse-button'/></button></td>
+                    <td><CircleCheck onClick={() => allowUser(user.email)} className='check-button'/></td>
+                    <td><Ban className='refuse-button'/></td>
                   </tr>
                 ))}
               </tbody>

@@ -45,13 +45,10 @@
               text-wrap: balance;
           }
 
-          button{
-            cursor: pointer;
-            border: none;
-            background-color: $primary_white;
-          }
+
 
           .check-button{
+            cursor: pointer;
             color: $primary_green;
             background-color: none;
             border: none;
@@ -59,6 +56,7 @@
           }
 
           .refuse-button{
+            cursor: pointer;
             color: $primary_red;
             background-color: none;
             border: none;
@@ -78,10 +76,11 @@
 
           th{
             font-size: 12px !important;
-        }
+          }
           
           tr{
             font-size: 9px !important;
+            text-wrap: balance;
           }
         }
     }
