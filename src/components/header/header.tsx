@@ -6,7 +6,12 @@ import { useNavigate } from 'react-router-dom';
 import { Check } from 'lucide-react';
 import useCookies from '../../hooks/useCookies';
 
-export default function Header(){
+interface IHeaderProps {
+  name: string
+}
+
+
+export default function Header({name}: IHeaderProps){
   const {destroy} = useCookies()
   const navigate = useNavigate()
 
@@ -30,6 +35,11 @@ export default function Header(){
           <img src={logo} alt="logo" />
         </div>
         <div className={'header-options'}> 
+          <div className={'user'}>
+            <div className='card'>
+                <h1>{name.trim().substring(1)}</h1>
+            </div>
+          </div>
           <div className={'header-check'}>
             <a onClick={handleApprove}><Check className="check"/></a>
           </div>

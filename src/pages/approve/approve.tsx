@@ -19,6 +19,7 @@ interface IUserProps{
 
 
 export default function Approve(){
+  const employee = localStorage.getItem('useName')
   const [loader, setLoader] = useState<boolean>(false);
   const authTokenName = 'fhs-auth-token'
   const [user, setUser] = useState<IUserProps[]>([]);
@@ -66,7 +67,7 @@ export default function Approve(){
       { loader &&
         <Loader loading={loader} />
       }
-        <Header />
+        <Header name={employee} />
         <div className='approve-body'>
           <div className='approve-table'>
           <table>
