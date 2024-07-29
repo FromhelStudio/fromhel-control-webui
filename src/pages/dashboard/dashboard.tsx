@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import useCookies from '../../hooks/useCookies';
 import axios from 'axios';
-import Dialog from '../../components/dialog/dialog';
 import Header from '../../components/header/header';
 import Button from '../../components/button/button';
 import {useNavigate} from 'react-router-dom';
@@ -22,23 +21,6 @@ export default function Dashboard() {
   const { getCookie } = useCookies();
   const navigate = useNavigate();
 
-  function openDialog(id: string, name: string, email: string){
-    console.log('id', id)
-    console.log('name', name)
-    console.log('email', email)
-    return(
-      <>
-      <Dialog 
-      title={id}
-      >
-        <div className="">
-          <p>{name}</p>
-          <p>{email}</p>
-        </div>
-      </Dialog>
-      </>
-    )
-  }
 
   useEffect(() => {
     if(getCookie(authTokenName)){
@@ -53,6 +35,7 @@ export default function Dashboard() {
           toast.error('Erro ao achar usuários!')
           console.error('Error fetching clients:', error);
         }
+        setLoader(false)
       }
   
       fetchClients();
@@ -84,7 +67,10 @@ export default function Dashboard() {
             </thead>
             <tbody>
               {clients.map((client, index) => (
-                <tr className='client-table-row' onClick={() => openDialog(client.clientId, client.clientName, client.email)} key={index}>
+                <tr 
+                className='client-table-row' 
+                onClick={() => console.log('client', client)} 
+                key={index}>
                   <td>{client.clientId}</td>
                   <td>{client.clientName}</td>
                   <td>{client.email}</td>
