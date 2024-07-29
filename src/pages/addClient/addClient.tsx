@@ -32,7 +32,7 @@ export default function AddClient() {
           clientName: name,
           email: watch('email')
         });
-        toast.success('Cliente adicionado!')
+        toast.success('Usuário adicionado!')
         setTimeout(() => {
           navigate('/dashboard')
         }, 2000);
@@ -51,7 +51,7 @@ export default function AddClient() {
       <Header />
       <div className="add-client-box">
         <div className="add-client-form">
-            <h1>ADICIONAR CLIENTE</h1>
+            <h1>ADICIONAR USUÁRIO</h1>
             <p>Adicione os dados dele no nosso Banco de Dados</p>
             <form onSubmit={handleAdd}>
               <Input

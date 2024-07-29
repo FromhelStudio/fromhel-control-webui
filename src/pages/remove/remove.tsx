@@ -33,7 +33,7 @@ export default function AddClient() {
             clientId: fhsid
           }
         });
-        toast.success('Cliente removido!')
+        toast.success('Usuário removido!')
         setTimeout(() => {
           navigate('/dashboard')
         }, 2000);
@@ -51,8 +51,8 @@ export default function AddClient() {
       <Header />
       <div className="add-client-box">
         <div className="add-client-form">
-            <h1>REMOVER CLIENTE</h1>
-            <p>Escreva o FHS-ID delete para ser removido da nossa Base de Dados</p>
+            <h1>REMOVER Usuário</h1>
+            <p>Escreva o FHS-ID a ser removido da nossa Base de Dados</p>
             <form onSubmit={handleAdd}>
               <Input
                 className={'form-input'}
