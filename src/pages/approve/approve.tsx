@@ -55,6 +55,7 @@ export default function Approve(){
           console.error('Error fetching clients:', error);
         }
         setLoader(false)
+        console.log(employee)
       }
   
       fetchClients();
