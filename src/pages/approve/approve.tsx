@@ -67,7 +67,7 @@ export default function Approve(){
       { loader &&
         <Loader loading={loader} />
       }
-        <Header name={employee} />
+        <Header/>
         <div className='approve-body'>
           <div className='approve-table'>
           <table>
