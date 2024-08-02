@@ -54,7 +54,7 @@ export default function Dashboard() {
       <div className='cards-section'>
         <Card title='Usuários' data={clients.length.toString()} footer='Cadastros para o beta do BS'/>
         <Card title='Budget' data='R$0, 00' footer='Saldo total da empresa' />
-        <Card title='Novos Users' data={clients.length.toString()} footer='Número de cadastros no ultimo mês'/>
+        <Card title='Novos Users' data={'+' + clients.length.toString()} footer='Número de cadastros no ultimo mês'/>
         <Card title='Games' data={'Bullet Speel - 08/24'} footer='Jogos em produção'/>
       </div>
         <div className="dashboard-table">
