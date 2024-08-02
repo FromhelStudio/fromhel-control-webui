@@ -6,6 +6,7 @@ import Button from '../../components/button/button';
 import {useNavigate} from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import Loader from '../../components/loader/loader';
+import Card from '../../components/card/card'
 import './dashboard.scss';
 
 interface IClient {
@@ -50,12 +51,11 @@ export default function Dashboard() {
         <Loader loading={loader} />
     }
       <Header />
-        <div className="clients">
-          <h1>USUÁRIOS CADASTRADOS:</h1>
-          <div className="c-box">
-          <p>{clients.length}</p> 
-          </div>
-        </div>
+      <div className='cards-section'>
+        <Card title='Usuários' data={clients.length.toString()} footer='Cadastros para o beta do BS'/>
+        <Card title='Budget' data='R$0, 00' footer='Saldo total da empresa' />
+        <Card title='Novos Users' data={clients.length.toString()} footer='Número de cadastros no ultimo mês'/>
+      </div>
         <div className="dashboard-table">
           <table>
             <thead>
