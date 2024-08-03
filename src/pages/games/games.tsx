@@ -12,16 +12,16 @@ export default function Games(){
             <div className="cards-div">
                 <ImageCard 
                     title='Bullet Speel'
-                    description='A shooting game where you control a bullet sprite and shoot targets.'
+                    description='A odisseia de João e Maria apresentada de uma forma diferente.'
                     img={bulletHouse}
-                    footer='Play now!'
+                    footer='08/2024'
                 />
 
                 <ImageCard 
                     title='Cordel Do Mandacaru'
-                    description='A puzzle game where you need to rearrange the tiles to make a picture.'
+                    description='O cangaço visto pelos olhos da vingança.'
                     img={cruz}
-                    footer='Play now!'
+                    footer='01/2025'
                 />
             </div>
         </div>
