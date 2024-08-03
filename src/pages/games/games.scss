@@ -1,0 +1,27 @@
+@use '../../components/variables.scss' as *;
+
+.games-page{
+    min-height: 100vh;
+    width: 100%;
+    background-color: $primary_white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cards-div{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+@media screen and (max-width: 440px){
+    .cards-div{
+        flex-direction: column;
+    }
+
+}

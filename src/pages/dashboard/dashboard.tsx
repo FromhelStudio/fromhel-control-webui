@@ -68,11 +68,12 @@ export default function Dashboard() {
         <Card 
         title='New' icon={<UserPlus/>} 
         data={'+' + clients.length.toString()} 
-        footer='Número de cadastros no ultimo mês'/>
-        <Card 
+        footer='Cadastros no ultimo mês'/>
+        <Card
+        onClick={() => navigate('/games')}
         title='Games' 
         icon={<Gamepad2/>} 
-        games={['Bullet Speel - 08/24', 'Cordel Do Mandacaru - 12/24']} 
+        games={['B.S - 08/24', 'C.D.M - 12/24']} 
         footer='Jogos em produção'/>
       </div>
         <div className="dashboard-table">

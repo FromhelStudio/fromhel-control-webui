@@ -7,13 +7,14 @@ interface ICardProps{
     games?: string[]
     footer: string
     icon?: ReactNode
+    onClick?: () => void
 }
 
-export default function Card({title, data, games, footer, icon}: ICardProps){
+export default function Card({title, data, games, footer, icon, onClick}: ICardProps){
     return(
         <>
         <div className='card-main'>
-            <div className="card-box">
+            <div onClick={onClick} className="card-box">
                 <div className="card-header">
                     <h1>{title}</h1>
                     {icon}

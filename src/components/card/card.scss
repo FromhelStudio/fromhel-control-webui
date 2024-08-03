@@ -2,6 +2,7 @@
 
 h2{
     color: $primary_yellow;
+    margin: 5px;
 }
 
 
@@ -9,6 +10,12 @@ h2{
     width: 80%;
     height: 60%;
     margin: 15px;
+    transition: transform 0.3s ease; 
+
+    &:hover{
+        cursor: pointer;
+        transform: translateY(-10px); 
+    }
 
     .card-header{
         display: flex;
@@ -39,16 +46,21 @@ h2{
         height: 100%;
         width: 70%;
 
+        .card-body{
+            padding: 5px;
+        }
+
         h1{
             text-wrap: nowrap;
             font-size: 23px;
         }
 
         h2{
-            font-size: 20px
+            font-size: 20px;
         }
 
         p{
+            width: 100%;
             text-wrap: balance;
         }
     }
