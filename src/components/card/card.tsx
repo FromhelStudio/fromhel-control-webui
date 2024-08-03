@@ -1,21 +1,25 @@
+import { ReactNode } from 'react'
 import './card.scss'
 
 interface ICardProps{
     title: string
-    data: string
+    data?: string
+    games?: string[]
     footer: string
+    icon?: ReactNode
 }
 
-export default function Card({title, data, footer}: ICardProps){
+export default function Card({title, data, games, footer, icon}: ICardProps){
     return(
         <>
         <div className='card-main'>
             <div className="card-box">
                 <div className="card-header">
                     <h1>{title}</h1>
+                    {icon}
                 </div>
                 <div className="card-body">
-                    <h2>{data}</h2>
+                    {data ? (<h2>{data}</h2>) : games?.map((game, index) => <p style={{color:'#f0ec05', fontSize: '11px'}} key={index}>{game}</p>)}
                 </div>
                 <div className="card-footer">
                     <p>{footer}</p>

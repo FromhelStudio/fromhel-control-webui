@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-inner-declarations */
 import { useState, useEffect } from 'react';
 import useCookies from '../../hooks/useCookies';
 import axios from 'axios';
@@ -7,6 +9,7 @@ import {useNavigate} from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import Loader from '../../components/loader/loader';
 import Card from '../../components/card/card'
+import { DollarSign, User, UserPlus, Gamepad2 } from 'lucide-react';
 import './dashboard.scss';
 
 interface IClient {
@@ -52,10 +55,25 @@ export default function Dashboard() {
     }
       <Header />
       <div className='cards-section'>
-        <Card title='Usuários' data={clients.length.toString()} footer='Cadastros para o beta do BS'/>
-        <Card title='Budget' data='R$0, 00' footer='Saldo total da empresa' />
-        <Card title='Novos Users' data={'+' + clients.length.toString()} footer='Número de cadastros no ultimo mês'/>
-        <Card title='Games' data={'Bullet Speel - 08/24'} footer='Jogos em produção'/>
+        <Card
+         title='Usuários' 
+         icon={<User />} 
+         data={clients.length.toString()} 
+         footer='Cadastros para o beta do BS'/>
+        <Card 
+        title='Budget' 
+        icon={<DollarSign />} 
+        data='R$20,00' 
+        footer='Saldo total da empresa' />
+        <Card 
+        title='New' icon={<UserPlus/>} 
+        data={'+' + clients.length.toString()} 
+        footer='Número de cadastros no ultimo mês'/>
+        <Card 
+        title='Games' 
+        icon={<Gamepad2/>} 
+        games={['Bullet Speel - 08/24', 'Cordel Do Mandacaru - 12/24']} 
+        footer='Jogos em produção'/>
       </div>
         <div className="dashboard-table">
           <table>
