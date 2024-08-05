@@ -1,0 +1,15 @@
+@use '../variables.scss' as *;
+input{
+  padding: 15px;
+  margin: 5px;
+  width: 250px;
+  border: 1px solid $secondary_gray;
+  border-radius: 10px;
+  transition: border-color 0.2s;
+  
+  &:focus{
+    transition: 1s;
+    border: 1px solid $primary_blue; 
+    outline: none;
+  }
+}

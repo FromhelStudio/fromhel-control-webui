@@ -11,6 +11,10 @@ import Loader from '../../components/loader/loader';
 import Card from '../../components/card/card'
 import { DollarSign, User, UserPlus, Gamepad2 } from 'lucide-react';
 import './dashboard.scss';
+import { TDashBoardFilter, dashBoardFilter } from './dashBoardForm';
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form';
+import Input from '../../components/input/input';
 
 interface IClient {
   clientId: string;
@@ -24,6 +28,22 @@ export default function Dashboard() {
   const [clients, setClients] = useState<IClient[]>([]);
   const { getCookie } = useCookies();
   const navigate = useNavigate();
+
+  
+  const { register, setValue, watch } = useForm<TDashBoardFilter>({
+    resolver: zodResolver(dashBoardFilter)
+  })
+
+
+
+  useEffect(() => {
+    clients.map((client) => {
+      if(client.clientName.includes(watch('inputData'))){
+        console.log(client)
+      }
+    })
+  }, [watch('inputData')])
+
 
 
   useEffect(() => {
@@ -77,6 +97,18 @@ export default function Dashboard() {
         footer='Jogos em produção'/>
       </div>
         <div className="dashboard-table">
+          <div className='dashboard-search'>
+            <Input 
+            placeholder="Buscar por nome"
+            onEnter={(val) => console.log(val)}
+            validationForms={register('inputData')}
+            />
+            <Button 
+            type='submit'
+            text='Limpar'
+            onClick={() => setValue('inputData', '')}
+            />
+           </div>
           <table>
             <thead>
               <tr>
@@ -86,6 +118,20 @@ export default function Dashboard() {
               </tr>
             </thead>
             <tbody>
+              {
+                watch('inputData') &&
+                clients.map((client) => {
+                  if(client.clientName.match(watch('inputData'))){
+                    return( 
+                      <tr key={client.clientId}>
+                        <td>{client.clientId}</td>
+                        <td>{client.clientName}</td>
+                        <td>{client.email}</td>
+                      </tr>
+                    )  
+                  }
+                })
+              }
               {clients.map((client, index) => (
                 <tr 
                 className='client-table-row' 
