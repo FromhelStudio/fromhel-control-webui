@@ -7,31 +7,37 @@ import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css'; 
 import Button from '../../components/button/button'
 import { useForm } from 'react-hook-form'
-import {useContext, useCallback} from 'react'
+import {useContext, useCallback, useState} from 'react'
 import { syncOutSchema, TSyncOutSchema } from './syncOutForm'
 import bcrypt from 'bcryptjs'
 import { AuthContext } from '../../contexts/authContext'
+import Loader from '../../components/loader/loader';
 
 export default function SyncOut(){
 
+  const [logging, setLogging] = useState<boolean>(false)
   const { register, setValue, handleSubmit, watch } = useForm<TSyncOutSchema>({
     resolver: zodResolver(syncOutSchema)
   })
   const navigate = useNavigate()
   const { login } = useContext(AuthContext)
+  
 
   const syncOut = useCallback(async () => {
+    setLogging(true)
     const hashedPassword = bcrypt.hashSync(watch('password'), '$2a$10$CwTycUXWue0Thq9StjUM0u')
     try {
       await login(watch('email'), hashedPassword)
       toast.success('Logado com sucesso')
       setTimeout(() => {
         navigate('/dashboard')
+        setLogging(false)
       }, 1000);
       setValue('email', '')
       setValue('password', '')
     } catch (error) {
       toast.error('Erro ao entrar, verifique seus dados e tente novamente')
+      setLogging(false)
     }
   }, [login, navigate, setValue, watch])
 
@@ -41,6 +47,10 @@ export default function SyncOut(){
 
   return(
     <>
+    {
+      logging &&
+        <Loader loading={logging} />
+    }
       <div className="login-page">
         <div className="login-box">
           <div className="login-form">
