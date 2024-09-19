@@ -7,6 +7,7 @@ import AddClient from './pages/addClient/addClient';
 import Dashboard from './pages/dashboard/dashboard';
 import Approve from './pages/approve/approve';
 import Games from './pages/games/games';
+import BulletSpeel from './pages/bulletspeel/bulletspeel';
 
 
 export default function Router() {
@@ -20,6 +21,7 @@ export default function Router() {
           <Route path='/dashboard' element={<Dashboard />}/>
           <Route path='/approve' element={<Approve />}/>
           <Route path='/games' element={<Games />}/>
+          <Route path='/bulletspeel' element={<BulletSpeel />}/>
           <Route path='*' element={<SyncOut />} />
       </Routes>
     </AuthProvider>
