@@ -34,6 +34,7 @@ h1, h2{
   font-style: bold;
   font-size: 30px;
   margin:  0 5px;
+  color: $primary_white;
 }
 
 p{
@@ -43,7 +44,7 @@ p{
   font-weight: 400;
   font-style: normal;
   font-size: 13px;
-  color: $primary_gray;
+  color: $primary_white;
 }
 
 a{
@@ -53,7 +54,7 @@ a{
   font-weight: 400;
   font-style: normal;
   font-size: 13px;
-  color: $primary_gray;
+  color: $primary_white;
   text-wrap: nowrap;
   text-decoration: none;
 }

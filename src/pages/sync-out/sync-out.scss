@@ -4,11 +4,15 @@
 .login-page{
   width: 100%;
   height: 100%;
-  background-color: $primary_white;
+  background-color: $primary_black;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  
+  h1, h2, p{
+    color: $primary_white;
+  }
 }
 
 .login-box{
@@ -19,8 +23,8 @@
   justify-content: space-around;
   align-items: center;
   margin: auto;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
-  background-color: $primary_white;
+  box-shadow: 0 0 10px 0 rgba(230, 228, 228, 0.1);
+  background-color: $primary_black;
   padding: 20px;
   border-radius: 15px;
 
@@ -36,13 +40,13 @@
       padding: 15px;
       margin: 5px;
       width: 250px;
-      border: 1px solid $secondary_gray;
+      border: 1px solid $primary_white;
       border-radius: 10px;
       transition: border-color 0.2s;
       
       &:focus{
         transition: 1s;
-        border: 1px solid $primary_blue; 
+        border: 1px solid $primary_yellow; 
         outline: none;
       }
     }

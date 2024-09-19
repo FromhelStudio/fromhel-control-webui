@@ -3,10 +3,12 @@ input{
   padding: 15px;
   margin: 5px;
   width: 250px;
+  background-color: $primary_black;
   border: 1px solid $secondary_gray;
   border-radius: 10px;
   transition: border-color 0.2s;
-  
+  color: $primary_white;
+
   &:focus{
     transition: 1s;
     border: 1px solid $primary_blue; 
