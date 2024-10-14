@@ -77,8 +77,11 @@ export default function SyncOut(){
               />
               <Button action={'submit'} text={'ENTRAR'} />
               <a href='#' onClick={handleNavigate}><p>Novo acesso? Faça o cadastro!</p></a>
+              <div className="google-section">    
               <GoogleOAuthProvider clientId='1031699099613-fiijnjsheshldjh90pf0f8k27c5998p1.apps.googleusercontent.com'>
                 <GoogleLogin
+                              logo_alignment='center'
+                              locale='pt-BR'
                               shape='circle'
                               type='icon'
                               onSuccess={async (credentialResponse) => {
@@ -96,6 +99,7 @@ export default function SyncOut(){
                               
                             />;
               </GoogleOAuthProvider>
+            </div>
             </form>
           </div>
           <div className="login-logo">
