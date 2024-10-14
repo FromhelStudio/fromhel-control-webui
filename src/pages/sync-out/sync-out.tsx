@@ -6,7 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css'; 
 import Button from '../../components/button/button'
-import { useForm } from 'react-hook-form'
+import { set, useForm } from 'react-hook-form'
 import {useContext, useCallback, useState} from 'react'
 import { syncOutSchema, TSyncOutSchema } from './syncOutForm'
 import bcrypt from 'bcryptjs'
@@ -94,6 +94,7 @@ export default function SyncOut(){
                                   }, 1000);
                               }}
                               onError={() => {
+                                setLogging(false)
                                 toast.error('Falha ao logar com Google');
                               }}
                               
