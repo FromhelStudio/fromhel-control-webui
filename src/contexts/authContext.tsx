@@ -2,6 +2,7 @@ import axios from "axios";
 import { createContext, useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import useCookies from "../hooks/useCookies";
+import {jwtDecode, JwtPayload} from 'jwt-decode';
 
 type TUserDetail = {
   Login: string
@@ -13,9 +14,16 @@ interface IAuthProviderProps{
   children: TChildren
 }
 
+interface GoogleJwtPayload extends JwtPayload {
+  name: string;
+  email: string;
+  picture: string;
+}
+
 type TAuthContextProps = {
  user: TUserDetail
  login: (user: string, password: string) => void 
+ googleLogin: (response: any) => void
 }
 
 export const AuthContext = createContext({} as TAuthContextProps)
@@ -38,6 +46,7 @@ export default function AuthProvider({children}: IAuthProviderProps): JSX.Elemen
           }
         ) 
         void localStorage.setItem('useName', response.data.name)
+        void localStorage.setItem('useEmail', response.data.email)
         void setUser({Login: response.data.name})
         void setCookie(authTokenName, response.data.token, {
           expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 1),
@@ -45,6 +54,25 @@ export default function AuthProvider({children}: IAuthProviderProps): JSX.Elemen
  }catch(e){
     throw new Error('Erro ao entrar, verifique seus dados e tente novamente')
   }
+}
+
+async function googleLogin(response){
+  const decoded = jwtDecode<GoogleJwtPayload>(response.credential)
+        try{
+          const gAuth = await axios.post(
+            'https://fromhel-control.vercel.app/v1/user/gAuth',
+            {
+              email: decoded.email
+            })  
+          void localStorage.setItem('useName', decoded.name)
+          void localStorage.setItem('useEmail', gAuth.data.email)
+          void setUser({Login: decoded.email})
+          void setCookie(authTokenName, response.credential, {
+            expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 1),
+          })
+        }catch(e){
+          throw new Error('Erro ao entrar, verifique seus dados e tente novamente')
+        }
 }
 
 useEffect(() => {
@@ -60,8 +88,9 @@ useEffect(() => {
   redirect()
 }, [])
     return(
-        <AuthContext.Provider value={{login, user}}>
+        <AuthContext.Provider value={{login, googleLogin, user}}>
             {children}
         </AuthContext.Provider>
     )
 }
+

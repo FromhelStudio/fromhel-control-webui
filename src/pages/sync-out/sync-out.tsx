@@ -12,6 +12,7 @@ import { syncOutSchema, TSyncOutSchema } from './syncOutForm'
 import bcrypt from 'bcryptjs'
 import { AuthContext } from '../../contexts/authContext'
 import Loader from '../../components/loader/loader';
+import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
 
 export default function SyncOut(){
 
@@ -20,8 +21,7 @@ export default function SyncOut(){
     resolver: zodResolver(syncOutSchema)
   })
   const navigate = useNavigate()
-  const { login } = useContext(AuthContext)
-  
+  const { login, googleLogin } = useContext(AuthContext)
 
   const syncOut = useCallback(async () => {
     setLogging(true)
@@ -44,13 +44,14 @@ export default function SyncOut(){
   const handleNavigate = () => {
     navigate('/register')
   }
-
+  
   return(
     <>
     {
       logging &&
         <Loader loading={logging} />
     }
+
       <div className="login-page">
         <div className="login-box">
           <div className="login-form">
@@ -76,6 +77,22 @@ export default function SyncOut(){
               />
               <Button action={'submit'} text={'ENTRAR'} />
               <a href='#' onClick={handleNavigate}><p>Novo acesso? Faça o cadastro!</p></a>
+              <GoogleOAuthProvider clientId='1031699099613-fiijnjsheshldjh90pf0f8k27c5998p1.apps.googleusercontent.com'>
+                <GoogleLogin
+                              onSuccess={async (credentialResponse) => {
+                                  setLogging(true)
+                                  await googleLogin(credentialResponse)
+                                  toast.success('Logado com sucesso')
+                                  setTimeout(() => {
+                                    navigate('/dashboard')
+                                    setLogging(false)
+                                  }, 1000);
+                              }}
+                              onError={() => {
+                                toast.error('Falha ao logar com Google');
+                              }}
+                            />;
+              </GoogleOAuthProvider>
             </form>
           </div>
           <div className="login-logo">
