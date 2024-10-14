@@ -74,26 +74,26 @@ export default function Dashboard() {
         <div className="cards-section">
           <Card
             title="Usuários"
-            icon={<User />}
+            icon={<User style={{color: 'white'}}/>}
             data={clients.length.toString()}
             footer="Cadastros para o beta do BS"
           />
           <Card
             title="Budget"
-            icon={<DollarSign />}
+            icon={<DollarSign style={{color: 'white'}} />}
             data="R$20,00"
             footer="Saldo total da empresa"
           />
           <Card
             title="New"
-            icon={<UserPlus />}
+            icon={<UserPlus style={{color: 'white'}}/>}
             data={'+' + clients.length.toString()}
             footer="Cadastros no ultimo mês"
           />
           <Card
             onClick={() => navigate('/games')}
             title="Games"
-            icon={<Gamepad2 />}
+            icon={<Gamepad2 style={{color: 'white'}}/>}
             games={['B.S - 08/24', 'C.D.M - 12/24']}
             footer="Jogos em produção"
           />
