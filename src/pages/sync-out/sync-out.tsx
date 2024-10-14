@@ -79,6 +79,8 @@ export default function SyncOut(){
               <a href='#' onClick={handleNavigate}><p>Novo acesso? Faça o cadastro!</p></a>
               <GoogleOAuthProvider clientId='1031699099613-fiijnjsheshldjh90pf0f8k27c5998p1.apps.googleusercontent.com'>
                 <GoogleLogin
+                              shape='circle'
+                              type='icon'
                               onSuccess={async (credentialResponse) => {
                                   setLogging(true)
                                   await googleLogin(credentialResponse)
@@ -91,6 +93,7 @@ export default function SyncOut(){
                               onError={() => {
                                 toast.error('Falha ao logar com Google');
                               }}
+                              
                             />;
               </GoogleOAuthProvider>
             </form>
