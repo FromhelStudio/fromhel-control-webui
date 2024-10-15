@@ -20,6 +20,12 @@ interface GoogleJwtPayload extends JwtPayload {
   picture: string;
 }
 
+interface FHSjwtPayload extends JwtPayload {
+  name: string;
+  email: string;
+  isEmployee: boolean;
+}
+
 type TAuthContextProps = {
  user: TUserDetail
  login: (user: string, password: string) => void 
@@ -45,10 +51,12 @@ export default function AuthProvider({children}: IAuthProviderProps): JSX.Elemen
             password: password,
           }
         ) 
-        void localStorage.setItem('useName', response.data.name)
-        void localStorage.setItem('useEmail', response.data.email)
-        void setUser({Login: response.data.name})
-        void setCookie(authTokenName, response.data.token, {
+        const decoded = jwtDecode<FHSjwtPayload>(response.data.token)
+        void localStorage.setItem('userName', decoded.name)
+        void localStorage.setItem('userEmail', decoded.email)
+        void localStorage.setItem('employee', decoded.isEmployee.toString())
+        void setUser({Login: decoded.name})
+        void setCookie(authTokenName, response.data.token,{
           expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 1),
         })
  }catch(e){
@@ -64,8 +72,8 @@ async function googleLogin(response){
             {
               email: decoded.email
             })  
-          void localStorage.setItem('useName', decoded.name)
-          void localStorage.setItem('useEmail', gAuth.data.email)
+          void localStorage.setItem('userName', decoded.name)
+          void localStorage.setItem('userEmail', gAuth.data.email)
           void setUser({Login: decoded.email})
           void setCookie(authTokenName, response.credential, {
             expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 1),
