@@ -1,5 +1,5 @@
 import './header.scss';
-import logo from '../../assets/logo.webp'
+import logo from '../../assets/logo.png'
 import { LogOut } from 'lucide-react';
 import { ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';

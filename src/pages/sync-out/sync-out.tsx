@@ -1,5 +1,5 @@
 import './sync-out.scss'
-import logo from '../../assets/logo.webp'
+import logo from '../../assets/logo.png'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Input from '../../components/input/input'
 import { ToastContainer, toast } from 'react-toastify';
