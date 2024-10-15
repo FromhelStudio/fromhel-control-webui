@@ -15,6 +15,7 @@ import { TDashBoardFilter, dashBoardFilter } from './dashBoardForm'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import Input from '../../components/input/input'
+import { env } from '../../config/enviroment'
 
 interface IClient {
   clientId: string
@@ -50,7 +51,7 @@ export default function Dashboard() {
       async function fetchClients() {
         try {
           const response = await axios.get(
-            'https://fromhel-backend.vercel.app/list'
+            `${env.CLIENT_API + '/list'}`
           )
           setClients(response.data)
           toast.success('Usuários encontrados!')

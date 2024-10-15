@@ -3,6 +3,7 @@ import { createContext, useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import useCookies from "../hooks/useCookies";
 import {jwtDecode, JwtPayload} from 'jwt-decode';
+import { env } from "../config/enviroment";
 
 type TUserDetail = {
   Login: string
@@ -45,7 +46,7 @@ export default function AuthProvider({children}: IAuthProviderProps): JSX.Elemen
 
       try {
         const response  = await axios.post(
-          'https://fromhel-control.vercel.app/v1/user/sync-out',
+           `${env.BASE_API +'/v1/user/sync-out'}`,
           {
             email: user,
             password: password,
@@ -68,7 +69,7 @@ async function googleLogin(response){
   const decoded = jwtDecode<GoogleJwtPayload>(response.credential)
         try{
           const gAuth = await axios.post(
-            'https://fromhel-control.vercel.app/v1/user/gAuth',
+             `${env.BASE_API +'/v1/user/gAuth'}`,
             {
               email: decoded.email
             })  

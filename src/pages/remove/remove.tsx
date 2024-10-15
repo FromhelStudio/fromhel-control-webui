@@ -10,6 +10,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { removeClientSchema, TRemoveClientSchema } from './deleteForm';
 import './remove.scss';
 import Input from '../../components/input/input';
+import env from 'react-dotenv';
 
 export default function AddClient() {
   const authTokenName = 'fhs-auth-token'
@@ -28,7 +29,7 @@ export default function AddClient() {
   const handleAdd = async () => {
     const fhsid = watch('fhsId').toString().toUpperCase()
       try {
-        const response = await axios.delete(`https://fromhel-backend.vercel.app/delete`, {
+        const response = await axios.delete(`${env.CLIENT_API + '/delete'}`, {
           data: {
             clientId: fhsid
           }

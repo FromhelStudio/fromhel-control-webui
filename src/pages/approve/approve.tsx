@@ -7,6 +7,7 @@ import { Ban } from 'lucide-react';
 import { CircleCheck } from 'lucide-react';
 import { ToastContainer, toast } from 'react-toastify';
 import Loader from '../../components/loader/loader';
+import { env } from '../../config/enviroment';
 
 
 interface IUserProps{
@@ -27,7 +28,7 @@ export default function Approve(){
 
   async function allowUser(email: string){
     try{
-      const response = await axios.put('https://fromhel-control.vercel.app/v1/user/update-user', {
+      const response = await axios.put( `${env.BASE_API + '/v1/user/update-user'}`, {
         email: email,
         isEmployee: true
       })
@@ -46,7 +47,7 @@ export default function Approve(){
       setLoader(true);
       async function fetchClients() {
         try {
-          const response = await axios.get('https://fromhel-control.vercel.app/v1/user/listBy');
+          const response = await axios.get(`${env.BASE_API + '/v1/user/listBy'}`);
           setUser(response.data.users); 
           toast.success('Usuários encontrados!')
           setLoader(false);

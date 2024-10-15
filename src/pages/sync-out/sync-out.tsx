@@ -13,6 +13,7 @@ import bcrypt from 'bcryptjs'
 import { AuthContext } from '../../contexts/authContext'
 import Loader from '../../components/loader/loader';
 import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
+import { env } from '../../config/enviroment';
 
 export default function SyncOut(){
 
@@ -94,7 +95,7 @@ export default function SyncOut(){
               <Button action={'submit'} text={'ENTRAR'} />
               <a href='#' onClick={handleNavigate}><p>Novo acesso? Faça o cadastro!</p></a>
               <div className="google-section">    
-              <GoogleOAuthProvider clientId='1031699099613-fiijnjsheshldjh90pf0f8k27c5998p1.apps.googleusercontent.com'>
+              <GoogleOAuthProvider clientId={env.GOOGLE_ID}>
                 <GoogleLogin
                               logo_alignment='center'
                               locale='pt-BR'

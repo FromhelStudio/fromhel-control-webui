@@ -10,6 +10,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { addClientSchema, TAddClientSchema } from './clientForm.ts';
 import './addClient.scss';
 import Input from '../../components/input/input';
+import { env } from '../../config/enviroment.ts';
 
 export default function AddClient() {
   const authTokenName = 'fhs-auth-token'
@@ -28,7 +29,7 @@ export default function AddClient() {
   const handleAdd = async () => {
     const name = watch('name').toString().toUpperCase()
       try {
-        const response = await axios.post('https://fromhel-backend.vercel.app/register', {
+        const response = await axios.post(`${env.CLIENT_API + '/register'}`, {
           clientName: name,
           email: watch('email')
         });

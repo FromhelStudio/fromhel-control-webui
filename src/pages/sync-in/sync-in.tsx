@@ -10,6 +10,7 @@ import Button from '../../components/button/button'
 import { useForm } from 'react-hook-form'
 import { loginFormSchema, TLoginSchema } from './loginForm'
 import bcrypt from 'bcryptjs'
+import env from 'react-dotenv'
 
 export default function SyncIn() {
 
@@ -23,7 +24,7 @@ export default function SyncIn() {
     const hashedPassword = bcrypt.hashSync(watch('password'), '$2a$10$CwTycUXWue0Thq9StjUM0u')
     try {
       const response = await axios.post(
-        'https://fromhel-control.vercel.app/v1/user/sync-in',
+        `${env.BASE_API + '/v1/user/sync-in'}`,
         {
           name: watch('name'),
           email: watch('email'),
