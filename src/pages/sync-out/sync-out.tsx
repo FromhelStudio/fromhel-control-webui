@@ -93,7 +93,9 @@ export default function SyncOut(){
                 validationForms={register('password')}
               />
               <Button action={'submit'} text={'ENTRAR'} />
+<div className="new-section">
               <a href='#' onClick={handleNavigate}><p>Novo acesso? Faça o cadastro!</p></a>
+</div>
               <div className="google-section">    
               <GoogleOAuthProvider clientId={env.GOOGLE_ID}>
                 <GoogleLogin
