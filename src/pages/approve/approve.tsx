@@ -9,110 +9,134 @@ import { ToastContainer, toast } from 'react-toastify';
 import Loader from '../../components/loader/loader';
 import { env } from '../../config/enviroment';
 
-
-interface IUserProps{
-  name: string
-  email: string
-  phone: string
-  role: string
-  isEmployee: boolean
+interface IUserProps {
+  name: string;
+  email: string;
+  phone: string;
+  role: string;
+  isEmployee: boolean;
 }
 
-
-export default function Approve(){
-  const employee = localStorage.getItem('useName')
+export default function Approve() {
   const [loader, setLoader] = useState<boolean>(false);
-  const authTokenName = 'fhs-auth-token'
+  const authTokenName = 'fhs-auth-token';
   const [user, setUser] = useState<IUserProps[]>([]);
   const { getCookie } = useCookies();
+  const [isMobile, setIsMobile] = useState<boolean>(false);
 
-  async function allowUser(email: string){
-    try{
-      const response = await axios.put( `${env.BASE_API + '/v1/user/update-user'}`, {
+  async function allowUser(email: string) {
+    try {
+      const response = await axios.put(`${env.BASE_API + '/v1/user/update-user'}`, {
         email: email,
         isEmployee: true
-      })
-      if(response){
-        toast.success('Usuário autorizado!')
+      });
+      if (response) {
+        toast.success('Usuário autorizado!');
       }
-    }catch(error){
-      toast.error('Erro ao achar usuários!')
+    } catch (error) {
+      toast.error('Erro ao autorizar usuário!');
       console.error('Error fetching clients:', error);
     }
   }
 
+  const checkMobileScreen = () => {
+    setIsMobile(window.outerWidth < 750); // Verifica se a tela é menor que 750px
+  };
 
   useEffect(() => {
-    if(getCookie(authTokenName)){
+    checkMobileScreen();
+    window.addEventListener('resize', checkMobileScreen);
+
+    return () => {
+      window.removeEventListener('resize', checkMobileScreen);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (getCookie(authTokenName)) {
       setLoader(true);
       async function fetchClients() {
         try {
           const response = await axios.get(`${env.BASE_API + '/v1/user/listBy'}`);
-          setUser(response.data.users); 
-          toast.success('Usuários encontrados!')
-          setLoader(false);
+          setUser(response.data.users);
+          toast.success('Usuários encontrados!');
         } catch (error) {
-          toast.error('Erro ao achar usuários!')
+          toast.error('Erro ao achar usuários!');
           console.error('Error fetching clients:', error);
+        } finally {
+          setLoader(false);
         }
-        setLoader(false)
-        console.log(employee)
       }
-  
+
       fetchClients();
     }
-  }, [])
+  }, [getCookie(authTokenName)]);
 
-  return(
+  return (
     <>
       <div className='approve-page'>
-      { loader &&
-        <Loader loading={loader} />
-      }
-        <Header/>
+        {loader && <Loader loading={loader} />}
+        <Header />
         <div className='approve-body'>
-          <div className='approve-table'>
-          <table>
-              <thead>
-                <tr>
-                  <th>NOME</th>
-                  <th>EMAIL</th>
-                  <th>TELEFONE</th>
-                  <th>CARGO</th>
-                  <th></th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                {user.map((user, index) => (
-                  <tr 
-                  className='user-table-row' 
-                  key={index}>
-                    <td>{user.name}</td>
-                    <td>{user.email}</td>
-                    <td>{user.phone}</td>
-                    <td>{user.role}</td>
-                    <td><CircleCheck onClick={() => allowUser(user.email)} className='check-button'/></td>
-                    <td><Ban className='refuse-button'/></td>
+          {isMobile ? (
+            <div className='mobile-view'>
+              {user.map((user, index) => (
+                <div className='user-card' key={index}>
+                  <h1>{user.name}</h1>
+                  <p>{user.email}</p>
+                  <p>{user.phone}</p>
+                  <p>{user.role}</p>
+                  <CircleCheck onClick={() => allowUser(user.email)} className='check-button' />
+                  <Ban className='refuse-button' />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className='approve-table'>
+              <table>
+                <thead>
+                  <tr>
+                    <th>NOME</th>
+                    <th>EMAIL</th>
+                    <th>TELEFONE</th>
+                    <th>CARGO</th>
+                    <th></th>
+                    <th></th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                </thead>
+                <tbody>
+                  {user.map((user, index) => (
+                    <tr className='user-table-row' key={index}>
+                      <td>{user.name}</td>
+                      <td>{user.email}</td>
+                      <td>{user.phone}</td>
+                      <td>{user.role}</td>
+                      <td>
+                        <CircleCheck onClick={() => allowUser(user.email)} className='check-button' />
+                      </td>
+                      <td>
+                        <Ban className='refuse-button' />
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
         </div>
       </div>
       <ToastContainer 
-     position="top-right"
-     autoClose={5000}
-     hideProgressBar={false}
-     newestOnTop={false}
-     closeOnClick
-     rtl={false}
-     pauseOnFocusLoss
-     draggable
-     pauseOnHover
-     theme="colored"
-     />
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </>
-  )
+  );
 }
