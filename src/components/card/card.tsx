@@ -5,7 +5,7 @@ interface ICardProps{
     title: string
     data?: string
     games?: string[]
-    footer: string
+    footer?: string
     icon?: ReactNode
     style?: React.CSSProperties
     fontStyle?: React.CSSProperties
