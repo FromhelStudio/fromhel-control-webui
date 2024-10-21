@@ -12,7 +12,6 @@ export default function Games(){
     return (
         <div className="game-page">
             <Header />
-
             <div className="cards-div">
                 <ImageCard 
                     onClick={() => navigate('/bulletspeel')}
@@ -21,7 +20,6 @@ export default function Games(){
                     img={bulletHouse}
                     footer='08/2024'
                 />
-
                 <ImageCard 
                     title='Cordel Do Mandacaru'
                     description='O cangaço visto pelos olhos da vingança.'
