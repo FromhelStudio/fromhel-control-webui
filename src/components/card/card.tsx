@@ -2,9 +2,10 @@ import { ReactNode } from 'react'
 import './card.scss'
 
 interface ICardProps{
+    width?: string
     title: string
-    data?: string
-    games?: string[]
+    data?: string | number
+    games?: string[] 
     footer?: string
     icon?: ReactNode
     style?: React.CSSProperties
@@ -12,10 +13,10 @@ interface ICardProps{
     onClick?: () => void
 }
 
-export default function Card({title, data, games, fontStyle, footer, icon, style, onClick}: ICardProps){
+export default function Card({title, data, games, fontStyle, footer, icon, style, onClick, width}: ICardProps){
     return(
         <>
-        <div className='card-main'>
+        <div className='card-main' style={{width: width}}>
             <div onClick={onClick} className="card-box">
                 <div className="card-header">
                     <h1>{title}</h1>

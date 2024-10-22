@@ -19,8 +19,19 @@
     margin: 20px;
     margin-bottom: 0px;
 }
+
+.feedback-section{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 20px;
+    margin-bottom: 0px;
+}
     @media screen and (max-width: 440px){
         .ratings-section{
+            align-items: center;
             flex-direction: column;
         }
     }
